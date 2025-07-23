@@ -8,7 +8,7 @@ Windows Python program to make full-screen screenshots every 10 seconds for acco
 - Python 3.7+
 - Install required packages:
   ```
-  pip install pillow imagehash mss
+  pip install pillow imagehash mss psutil
   ```
 
 ## Installation
