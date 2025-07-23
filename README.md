@@ -27,7 +27,7 @@ Windows Python program to make full-screen screenshots every 10 seconds for acco
    - For a standalone `.exe` (no Python install required):
      ```
      pip install pyinstaller
-     pyinstaller --onefile auto-screenshot.py
+     pyinstaller --onefile --noconsole auto-screenshot.py
      ```
    - Resulting `.exe` will be in the `dist` folder.
 
