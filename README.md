@@ -2,7 +2,31 @@
 
 Windows Python program to make full-screen screenshots every 10 seconds for accountability purposes.
 
-## Prerequisites
+## Use the executable
+Go to https://github.com/SimonBaars/auto-screenshot-windows/releases/tag/1.0 and download the `auto_screenshot.exe` executable. Execute it and you can find the screenshots at `Pictures/Screenshots`.
+
+For autostart:
+
+- Press `Win + R`, enter:
+  ```
+  shell:startup
+  ```
+- Place a shortcut to `auto_screenshot.exe` here.
+
+## Notes
+
+- All screenshots are saved in `Pictures/Screenshots/YYYY/MM/DD/HH_MM_SS[_monitorX].png`
+- Duplicate consecutive screenshots (unchanged displays) are deleted automatically.
+- Errors are logged to file; script resumes automatically.
+
+## Other versions
+- XFCE (Linux): https://github.com/SimonBaars/xfce-auto-screenshot
+- Android (Magisk): https://github.com/SimonBaars/magisk-auto-screenshot
+- Android (APK): https://github.com/SimonBaars/Android-AutoScreenshot
+
+## Development instructions
+
+### Prerequisites
 
 - Windows 10 or later (though it prob works on earlier Windows versions)
 - Python 3.7+
@@ -11,7 +35,7 @@ Windows Python program to make full-screen screenshots every 10 seconds for acco
   pip install pillow imagehash mss psutil
   ```
 
-## Installation
+### Installation
 
 1. **Save Script**
    - Save the provided Python script as `auto-screenshot.py` in any folder.
@@ -31,7 +55,7 @@ Windows Python program to make full-screen screenshots every 10 seconds for acco
      ```
    - Resulting `.exe` will be in the `dist` folder.
 
-## Autostart Setup
+### Autostart Setup
 
 **Either method works:**
 
@@ -52,14 +76,3 @@ Windows Python program to make full-screen screenshots every 10 seconds for acco
     - **Program/script:** Path to `python.exe` or your compiled `.exe`
     - **Add arguments:** `auto-screenshot.py` (if using `.py`)
     - **Start in:** Directory of your script
-
-## Notes
-
-- All screenshots are saved in `Pictures/Screenshots/YYYY/MM/DD/HH_MM_SS[_monitorX].png`
-- Duplicate consecutive screenshots (unchanged displays) are deleted automatically.
-- Errors are logged to file; script resumes automatically.
-
-## Other versions
-- XFCE (Linux): https://github.com/SimonBaars/xfce-auto-screenshot
-- Android (Magisk): https://github.com/SimonBaars/magisk-auto-screenshot
-- Android (APK): https://github.com/SimonBaars/Android-AutoScreenshot
