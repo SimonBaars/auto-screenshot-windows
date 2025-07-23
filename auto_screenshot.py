@@ -24,17 +24,13 @@ def kill_previous_instance():
                 p = psutil.Process(pid)
                 # Optional: check process cmdline to be sure it's your script
                 cmdline = " ".join(p.cmdline()).lower()
-                if ('python' in cmdline or p.name().lower() == 'python.exe' or p.name().lower() == 'pythonw.exe') and \
-                        ('screenshotter.py' in cmdline or 'screenshotter.exe' in cmdline):
-                    print(f"Killing previous instance with PID {pid}")
-                    p.terminate()
-                    try:
-                        p.wait(timeout=5)
-                    except psutil.TimeoutExpired:
-                        print("Terminate timed out, killing now...")
-                        p.kill()
-                else:
-                    print(f"Process with PID {pid} is not recognized as previous instance, skipping kill.")
+                print(f"Killing previous instance with PID {pid}")
+                p.terminate()
+                try:
+                    p.wait(timeout=5)
+                except psutil.TimeoutExpired:
+                    print("Terminate timed out, killing now...")
+                    p.kill()
             else:
                 print("Previous PID not running.")
         except Exception as e:
