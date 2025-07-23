@@ -15,10 +15,14 @@ def take_screenshot():
     os.makedirs(full_dir, exist_ok=True)
     filenames = []
     with mss.mss() as sct:
-        # sct.monitors[1:] skips the pseudo-monitor [0]
-        for i, monitor in enumerate(sct.monitors[1:], start=1):
+        monitors = sct.monitors[1:]  # exclude the virtual monitor 0
+        multiple = len(monitors) > 1
+        for i, monitor in enumerate(monitors, start=1):
             sct_img = sct.grab(monitor)
-            img_filename = os.path.join(full_dir, f"{os.path.basename(path)}_monitor{i}.png")
+            if multiple:
+                img_filename = os.path.join(full_dir, f"{os.path.basename(path)}_monitor{i}.png")
+            else:
+                img_filename = os.path.join(full_dir, f"{os.path.basename(path)}.png")
             mss.tools.to_png(sct_img.rgb, sct_img.size, output=img_filename)
             filenames.append(img_filename)
     return filenames
